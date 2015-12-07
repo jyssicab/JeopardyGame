@@ -265,57 +265,81 @@ def used_questions(cat, amnt):
 			global amount1_1
 			amount1_1 = "--"
 		elif amnt == amount2:
-			return topic1_Q2
+			global amount1_2
+			amount1_2 = "--"
 		elif amnt == amount3:
-			return topic1_Q3
+			global amount1_3
+			amount1_3 = "--"
 		elif amnt == amount4:
-			return topic1_Q4
+			global amount1_4
+			amount1_4 = "--"
 		elif amnt == amount5:
-			return topic1_Q5
+			global amount1_5
+			amount1_5 = "--"
 	elif cat == topic2:
 		if amnt == amount1:
-			return topic2_Q1
+			global amount2_1
+			amount2_1 = "--"
 		elif amnt == amount2:
-			return topic2_Q2
+			global amount2_2
+			amount2_2 = "--"
 		elif amnt == amount3:
-			return topic2_Q3
+			global amount2_3
+			amount2_3 = "--"
 		elif amnt == amount4:
-			return topic2_Q4
+			global amount2_4
+			amount2_4 = "--"
 		elif amnt == amount5:
-			return topic2_Q5
+			global amount2_5
+			amount2_5 = "--"
 	elif cat == topic3:
 		if amnt == amount1:
-			return topic3_Q1
+			global amount3_1
+			amount3_1 = "--"
 		elif amnt == amount2:
-			return topic3_Q2
+			global amount3_2
+			amount3_2 = "--"
 		elif amnt == amount3:
-			return topic3_Q3
+			global amount3_3
+			amount3_3 = "--"
 		elif amnt == amount4:
-			return topic3_Q4
+			global amount3_4
+			amount3_4 = "--"
 		elif amnt == amount5:
-			return topic3_Q5
+			global amount3_5
+			amount3_5 = "--"
 	elif cat == topic4:
 		if amnt == amount1:
-			return topic4_Q1
+			global amount4_1
+			amount4_1 = "--"
 		elif amnt == amount2:
-			return topic4_Q2
+			global amount4_2
+			amount4_2 = "--"
 		elif amnt == amount3:
-			return topic4_Q3
+			global amount4_3
+			amount4_3 = "--"
 		elif amnt == amount4:
-			return topic4_Q4
+			global amount4_4
+			amount4_4 = "--"
 		elif amnt == amount5:
-			return topic4_Q5
+			global amount4_5
+			amount4_5 = "--"
 	elif cat == topic5:
 		if amnt == amount1:
-			return topic5_Q1
+			global amount5_1
+			amount5_1 = "--"
 		elif amnt == amount2:
-			return topic5_Q2
+			global amount5_2
+			amount5_2 = "--"
 		elif amnt == amount3:
-			return topic5_Q3
+			global amount5_3
+			amount5_3 = "--"
 		elif amnt == amount4:
-			return topic5_Q4
+			global amount5_4
+			amount5_4 = "--"
 		elif amnt == amount5:
-			return topic5_Q5
+			global amount5_5
+			amount5_5 = "--"
 	else:
 		return "You typed something incorrectly"
 	initialTable()
@@ -339,7 +363,7 @@ def player1():
 	#function to cross of used questions on board
 	used_questions(category, amount)
 	#now player2
-	player2()
+	#player2()
 	
 
 
