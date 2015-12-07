@@ -11,11 +11,15 @@ topic3 = "Sports"
 topic4 = "Nazo Nazo"
 topic5 = "Music"
 
-amount1 = "10"
-amount2 = "20"
-amount3 = "30"
-amount4 = "40"
-amount5 = "50"
+amount = ["10", "20", "30", "40", "50"]
+
+amount1 = ["10", "20", "30", "40", "50"]
+amount2 = ["10", "20", "30", "40", "50"]
+amount3 = ["10", "20", "30", "40", "50"]
+amount4 = ["10", "20", "30", "40", "50"]
+amount5 = ["10", "20", "30", "40", "50"]
+
+
 amount1_1 = "10"
 amount2_1 = "20"
 amount3_1 = "30"
@@ -42,74 +46,76 @@ amount3_5 = "30"
 amount4_5 = "40"
 amount5_5 = "50"
 
-score1 = 10
-score2 = 20
-score3 = 30
-score4 = 40
-score5 = 50
+
+score_earned = [10,20,30,40,50]
 
 p1_score = 0
 p2_score = 0
 
-topic1_Q1 = "What is the capital of the United States?"
-topic1_Q2 = "What is the longest river in America?"
-topic1_Q3 = "Where does the name America come from?"
-topic1_Q4 = "What country is north of America?"
-topic1_Q5 = "What does USA stand for?"
 
-topic1_A1 = "Washington"
-topic1_A2 = "Mississippi"
-topic1_A3 = "Amerigo Vespucci"
-topic1_A4 = "Canada"
-topic1_A5 = "United States of America"
+topic1_Q = ["What is the capital of the United States?",
+	"What is the longest river in America?", 
+	"Where does the name America come from?", 
+	"What country is north of America?", 
+	"What does USA stand for?"]
 
-topic2_Q1 = "What is Japan's country's song?"
-topic2_Q2 = "What is the biggest lake in Japan?"
-topic2_Q3 = "Who is on 5000 yen?"
-topic2_Q4 = "When did the Kamakura Bakufu start?"
-topic2_Q5 = "What is Japan's country's bird?"
+topic1_A = ["Washington",
+	"Mississippi",
+	"Amerigo Vespucci",
+	"Canada",
+	"United States of America"]
 
-topic2_A1 = "Kimigayo"
-topic2_A2 = "Lake Biwa / Biwa-ko"
-topic2_A3 = "Nitobe Inazo"
-topic2_A4 = "1192"
-topic2_A5 = "kiji"
 
-topic3_Q1 = "How many members are on a soccer team?"
-topic3_Q2 = "What is Hideo Nomo's uniform number?"
-topic3_Q3 = "In tennis, what is the name of 0 points?"
-topic3_Q4 = "Name 4 sports that don't use balls."
-topic3_Q5 = "Where were the 1984 Olympics?"
+topic2_Q = ["What is Japan's country's song?",
+	"What is the biggest lake in Japan?",
+	"Who is on 5000 yen?",
+	"When did the Kamakura Bakufu start?",
+	"What is Japan's country's bird?"]
 
-topic3_A1 = "11"
-topic3_A2 = "16"
-topic3_A3 = "love"
-topic3_A4 = "???"
-topic3_A5 = "Los Angeles"
+topic2_A = ["Kimigayo",
+	"Lake Biwa / Biwa-ko",
+	"Nitobe Inazo",
+	"1192",
+	"kiji"]
 
-topic4_Q1 = "1, 2, 4, 8, 16, ?"
-topic4_Q2 = "Z, Y, X, W, ?"
-topic4_Q3 = "S, M, T, ?, T, F, S"
-topic4_Q4 = "O, T, T, F, F, ?"
-topic4_Q5 = "J, Y, K, A, N, ?, K"
 
-topic4_A1 = "32"
-topic4_A2 = "V"
-topic4_A3 = "W"
-topic4_A4 = "S"
-topic4_A5 = "H"
 
-topic5_Q1 = "Who are the members of Globe?"
-topic5_Q2 = "Who sings 'Be With You'?"
-topic5_Q3 = "Who sings 'Young Man'?"
-topic5_Q4 = "How many keys are on a piano?"
-topic5_Q5 = "What does SMAP stand for?"
+topic3_Q = ["How many members are on a soccer team?",
+	"What is Hideo Nomo's uniform number?",
+	"In tennis, what is the name of 0 points?",
+	"Name 4 sports that don't use balls.",
+	"Where were the 1984 Olympics?"]
 
-topic5_A1 = "Keiko, Komuro Tetsuya, Marc Panther"
-topic5_A2 = "Glay"
-topic5_A3 = "Saijo Hideki"
-topic5_A4 = "88"
-topic5_A5 = "Sport Music Assemble People"
+topic3_A = ["11",
+	"16",
+	"love",
+	"???",
+	"Los Angeles"]
+
+topic4_Q = ["1, 2, 4, 8, 16, ?",
+	"Z, Y, X, W, ?",
+	"S, M, T, ?, T, F, S",
+	"O, T, T, F, F, ?",
+	"J, Y, K, A, N, ?, K"]
+
+topic4_A = ["32",
+	"V",
+	"W",
+	"S",
+	"H"]
+
+topic5_Q = ["Who are the members of Globe?",
+	"Who sings 'Be With You'?",
+	"Who sings 'Young Man'?",
+	"How many keys are on a piano?",
+	"What does SMAP stand for?"]
+
+topic5_A = ["Keiko, Komuro Tetsuya, Marc Panther",
+	"Glay",
+	"Saijo Hideki",
+	"88",
+	"Sport Music Assemble People"]
+
 
 #declaration of functions
 def initialTable():
@@ -125,125 +131,75 @@ def instructions():
 	print("To choose a topic and score, enter exactly what is typed on Board (capatilization)")
 	print("Returning champion selected topic first")
 	print("Buzz in to answer quesiton")
-	print(player1 + " use key r\n" + player2 + " use key a\n" + player2 + " use key l\n")
+	print(player1 + " use key r\n" + player2 + " use key a\n" + player3 + " use key l\n")
 
 def getQuestion(cat, amnt):
 	#if statements
 	if cat == topic1:
-		if amnt == amount1:
-			return topic1_Q1
-		elif amnt == amount2:
-			return topic1_Q2
-		elif amnt == amount3:
-			return topic1_Q3
-		elif amnt == amount4:
-			return topic1_Q4
-		elif amnt == amount5:
-			return topic1_Q5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic1_Q[i]
+			i += 1
 	elif cat == topic2:
-		if amnt == amount1:
-			return topic2_Q1
-		elif amnt == amount2:
-			return topic2_Q2
-		elif amnt == amount3:
-			return topic2_Q3
-		elif amnt == amount4:
-			return topic2_Q4
-		elif amnt == amount5:
-			return topic2_Q5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic2_Q[i]
+			i += 1
 	elif cat == topic3:
-		if amnt == amount1:
-			return topic3_Q1
-		elif amnt == amount2:
-			return topic3_Q2
-		elif amnt == amount3:
-			return topic3_Q3
-		elif amnt == amount4:
-			return topic3_Q4
-		elif amnt == amount5:
-			return topic3_Q5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic3_Q[i]
+			i += 1
 	elif cat == topic4:
-		if amnt == amount1:
-			return topic4_Q1
-		elif amnt == amount2:
-			return topic4_Q2
-		elif amnt == amount3:
-			return topic4_Q3
-		elif amnt == amount4:
-			return topic4_Q4
-		elif amnt == amount5:
-			return topic4_Q5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic4_Q[i]
+			i += 1
 	elif cat == topic5:
-		if amnt == amount1:
-			return topic5_Q1
-		elif amnt == amount2:
-			return topic5_Q2
-		elif amnt == amount3:
-			return topic5_Q3
-		elif amnt == amount4:
-			return topic5_Q4
-		elif amnt == amount5:
-			return topic5_Q5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic5_Q[i]
+			i += 1
 	else:
 		return "You typed something incorrectly"
 
 def getAnswer(cat, amnt):
 	#if statements
 	if cat == topic1:
-		if amnt == amount1:
-			return topic1_A1
-		elif amnt == amount2:
-			return topic1_A2
-		elif amnt == amount3:
-			return topic1_A3
-		elif amnt == amount4:
-			return topic1_A4
-		elif amnt == amount5:
-			return topic1_A5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic1_A[i]
+			i += 1
 	elif cat == topic2:
-		if amnt == amount1:
-			return topic2_A1
-		elif amnt == amount2:
-			return topic2_A2
-		elif amnt == amount3:
-			return topic2_A3
-		elif amnt == amount4:
-			return topic2_A4
-		elif amnt == amount5:
-			return topic2_A5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic2_A[i]
+			i += 1
 	elif cat == topic3:
-		if amnt == amount1:
-			return topic3_A1
-		elif amnt == amount2:
-			return topic3_A2
-		elif amnt == amount3:
-			return topic3_A3
-		elif amnt == amount4:
-			return topic3_A4
-		elif amnt == amount5:
-			return topic3_A5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic3_A[i]
+			i += 1
 	elif cat == topic4:
-		if amnt == amount1:
-			return topic4_A1
-		elif amnt == amount2:
-			return topic4_A2
-		elif amnt == amount3:
-			return topic4_A3
-		elif amnt == amount4:
-			return topic4_A4
-		elif amnt == amount5:
-			return topic4_A5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic4_A[i]
+			i += 1
 	elif cat == topic5:
-		if amnt == amount1:
-			return topic5_A1
-		elif amnt == amount2:
-			return topic5_A2
-		elif amnt == amount3:
-			return topic5_A3
-		elif amnt == amount4:
-			return topic5_A4
-		elif amnt == amount5:
-			return topic5_A5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				return topic5_A[i]
+			i += 1
 	else:
 		return "You typed something incorrectly"
 
@@ -252,42 +208,35 @@ def checkAnswer_p1(user_ans, ans, amnt):
 
 	if user_ans == ans:
 		print("That is... CORRECT")
-		if amnt == amount1:
-			score = score1
-		elif amnt == amount2:
-			score = score2
-		elif amnt == amount3:
-			score = score3
-		elif amnt == amount4:
-			score = score4
-		elif amnt == amount5:
-			score = score5
+		
+		i = 0
+		for x in amount:
+			if amnt == x:
+				score = score_earned[i]
+			i += 1
 	else:
 		print("That is... WRONG")
 		score = 0
 	global p1_score
 	p1_score = p1_score + score
+	print(p1_score)
 
 def checkAnswer_p2(user_ans, ans, amnt):
 	
 
 	if user_ans == ans:
 		print("That is... CORRECT")
-		if amnt == amount1:
-			score = score1
-		elif amnt == amount2:
-			score = score2
-		elif amnt == amount3:
-			score = score3
-		elif amnt == amount4:
-			score = score4
-		elif amnt == amount5:
-			score = score5
+		i = 0
+		for x in amount:
+			if amnt == x:
+				score = score_earned[i]
+			i += 1
 	else:
 		print("That is... WRONG")
 		score = 0
 	global p2_score
 	p2_score = p2_score + score
+	print(p2_score)
 
 def used_questions(cat, amnt):
 	#if statements
