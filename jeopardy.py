@@ -19,34 +19,6 @@ amount3 = ["10", "20", "30", "40", "50"]
 amount4 = ["10", "20", "30", "40", "50"]
 amount5 = ["10", "20", "30", "40", "50"]
 
-
-amount1_1 = "10"
-amount2_1 = "20"
-amount3_1 = "30"
-amount4_1 = "40"
-amount5_1 = "50"
-amount1_2 = "10"
-amount2_2 = "20"
-amount3_2 = "30"
-amount4_2 = "40"
-amount5_2 = "50"
-amount1_3 = "10"
-amount2_3 = "20"
-amount3_3 = "30"
-amount4_3 = "40"
-amount5_3 = "50"
-amount1_4 = "10"
-amount2_4 = "20"
-amount3_4 = "30"
-amount4_4 = "40"
-amount5_4 = "50"
-amount1_5 = "10"
-amount2_5 = "20"
-amount3_5 = "30"
-amount4_5 = "40"
-amount5_5 = "50"
-
-
 score_earned = [10,20,30,40,50]
 
 p1_score = 0
@@ -120,11 +92,11 @@ topic5_A = ["Keiko, Komuro Tetsuya, Marc Panther",
 #declaration of functions
 def initialTable():
 	x = PrettyTable()
-	x.add_column(topic1, [amount1_1, amount2_1, amount3_1, amount4_1, amount5_1])
-	x.add_column(topic2, [amount1_2, amount2_2, amount3_2, amount4_2, amount5_2])
-	x.add_column(topic3, [amount1_3, amount2_3, amount3_3, amount4_3, amount5_3])
-	x.add_column(topic4, [amount1_4, amount2_4, amount3_4, amount4_4, amount5_4])
-	x.add_column(topic5, [amount1_5, amount2_5, amount3_5, amount4_5, amount5_5])
+	x.add_column(topic1, [amount1[0], amount1[1], amount1[2], amount1[3], amount1[4]])
+	x.add_column(topic2, [amount2[0], amount2[1], amount2[2], amount2[3], amount2[4]])
+	x.add_column(topic3, [amount3[0], amount3[1], amount3[2], amount3[3], amount3[4]])
+	x.add_column(topic4, [amount4[0], amount4[1], amount4[2], amount4[3], amount4[4]])
+	x.add_column(topic5, [amount5[0], amount5[1], amount5[2], amount5[3], amount5[4]])
 	print x.get_string(header=True, border=True)
 
 def instructions():
@@ -241,85 +213,40 @@ def checkAnswer_p2(user_ans, ans, amnt):
 def used_questions(cat, amnt):
 	#if statements
 	if cat == topic1:
-		if amnt == amount1:
-			global amount1_1
-			amount1_1 = "--"
-		elif amnt == amount2:
-			global amount2_1
-			amount2_1 = "--"
-		elif amnt == amount3:
-			global amount3_1
-			amount3_1 = "--"
-		elif amnt == amount4:
-			global amount4_1
-			amount4_1 = "--"
-		elif amnt == amount5:
-			global amount5_1
-			amount5_1 = "--"
+		i = 0
+		for x in amount:
+			if amnt == x:
+				global amount1
+				amount1[i] = "--"				
+			i += 1
 	elif cat == topic2:
-		if amnt == amount1:
-			global amount1_2
-			amount1_2 = "--"
-		elif amnt == amount2:
-			global amount2_2
-			amount2_2 = "--"
-		elif amnt == amount3:
-			global amount3_2
-			amount3_2 = "--"
-		elif amnt == amount4:
-			global amount4_2
-			amount4_2 = "--"
-		elif amnt == amount5:
-			global amount5_2
-			amount5_2 = "--"
+		i = 0
+		for x in amount:
+			if amnt == x:
+				global amount2
+				amount2[i] = "--"				
+			i += 1
 	elif cat == topic3:
-		if amnt == amount1:
-			global amount1_3
-			amount1_3 = "--"
-		elif amnt == amount2:
-			global amount2_3
-			amount2_3 = "--"
-		elif amnt == amount3:
-			global amount3_3
-			amount3_3 = "--"
-		elif amnt == amount4:
-			global amount4_3
-			amount4_3 = "--"
-		elif amnt == amount5:
-			global amount5_3
-			amount5_3 = "--"
+		i = 0
+		for x in amount:
+			if amnt == x:
+				global amount3
+				amount3[i] = "--"				
+			i += 1
 	elif cat == topic4:
-		if amnt == amount1:
-			global amount1_4
-			amount1_3 = "--"
-		elif amnt == amount2:
-			global amount2_4
-			amount2_4 = "--"
-		elif amnt == amount3:
-			global amount3_4
-			amount3_4 = "--"
-		elif amnt == amount4:
-			global amount4_4
-			amount4_4 = "--"
-		elif amnt == amount5:
-			global amount5_4
-			amount5_4 = "--"
+		i = 0
+		for x in amount:
+			if amnt == x:
+				global amount4
+				amount4[i] = "--"				
+			i += 1
 	elif cat == topic5:
-		if amnt == amount1:
-			global amount1_5
-			amount1_5 = "--"
-		elif amnt == amount2:
-			global amount2_5
-			amount2_5 = "--"
-		elif amnt == amount3:
-			global amount3_5
-			amount3_5 = "--"
-		elif amnt == amount4:
-			global amount4_5
-			amount4_5 = "--"
-		elif amnt == amount5:
-			global amount5_5
-			amount5_5 = "--"
+		i = 0
+		for x in amount:
+			if amnt == x:
+				global amount5
+				amount5[i] = "--"				
+			i += 1
 	else:
 		return "You typed something incorrectly"
 
