@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from prettytable import PrettyTable
+import time
 
 player1 = "Player1"
 player2 = "Player2"
@@ -104,7 +105,7 @@ def instructions():
 	print("To choose a topic and score, enter exactly what is typed on Board (capatilization)")
 	print("Returning champion selected topic first")
 	print("Buzz in to answer quesiton")
-	print(player1 + " use key r\n" + player2 + " use key a\n" + player3 + " use key l\n")
+	print(player1 + " use key a\n" + player2 + " use key l\n")# + player3 + " use key l\n")
 
 def getQuestion(cat, amnt):
 	#if statements
@@ -177,8 +178,8 @@ def getAnswer(cat, amnt):
 		return "You typed something incorrectly"
 
 def checkAnswer_p1(user_ans, ans, amnt):
-	
-
+	print(user_ans)
+	print(ans)
 	if user_ans == ans:
 		print("That is... CORRECT")
 		
@@ -265,47 +266,32 @@ def used_questions(cat, amnt):
 		return "You typed something incorrectly"
 
 def player3_turn():
-	initialTable()
-	#print("JEOPARDY")
-	print(player3)
-	category = raw_input("Choose Category: ")
-	amount = raw_input("Choose Amount: ")
-	print("\nYou chose " + category + " at " + amount)
-	#call function, pass in category and amount, then it will return question
-	#function contains if statments	
-	question = getQuestion(category, amount)
-	answer = getAnswer(category, amount)
-	print(answer)
-	print("Your question is...  " + question)
 	user_answer = raw_input("Answer: ")
 	#function that checks answer
 	checkAnswer_p3(user_answer, answer, amount)
 	#function to cross of used questions on board
 	used_questions(category, amount)
 
-def player2_turn():
-	initialTable()
-	#print("JEOPARDY")
+def player2_turn(category, answer, amount):
 	print(player2)
-	category = raw_input("Choose Category: ")
-	amount = raw_input("Choose Amount: ")
-	print("\nYou chose " + category + " at " + amount)
-	#call function, pass in category and amount, then it will return question
-	#function contains if statments	
-	question = getQuestion(category, amount)
-	answer = getAnswer(category, amount)
-	print(answer)
-	print("Your question is...  " + question)
 	user_answer = raw_input("Answer: ")
 	#function that checks answer
 	checkAnswer_p2(user_answer, answer, amount)
 	#function to cross of used questions on board
 	used_questions(category, amount)
 
-def player1_turn():
+def player1_turn(category, answer, amount):
+	print(player1)
+	user_answer = raw_input("Answer: ")
+	#function that checks answer
+	checkAnswer_p1(user_answer, answer, amount)
+	#function to cross of used questions on board
+	used_questions(category, amount)
+
+def choose_question():
 	initialTable()
 	#print("JEOPARDY")
-	print(player1)
+	#print(player1)
 	category = raw_input("Choose Category: ")
 	amount = raw_input("Choose Amount: ")
 	print("\nYou chose " + category + " at " + amount)
@@ -314,48 +300,49 @@ def player1_turn():
 	question = getQuestion(category, amount)
 	answer = getAnswer(category, amount)
 	print(answer)
+	print("Put your finger on the buzzer...")
+	counter = 5
+	print("Buzz in...")
+	while counter > 0:
+		print(counter)
+		time.sleep(1)
+		counter -= 1
 	print("Your question is...  " + question)
-	user_answer = raw_input("Answer: ")
-	#function that checks answer
-	checkAnswer_p1(user_answer, answer, amount)
-	#function to cross of used questions on board
-	used_questions(category, amount)
+	keyInput(category, answer, amount)
 
-#def choose_question():
-#	initialTable()
-	#print("JEOPARDY")
-##	print(player1)
-#	category = raw_input("Choose Category: ")
-#	amount = raw_input("Choose Amount: ")
-#	print("\nYou chose " + category + " at " + amount)
-
-#def keyInput():
-#	key = raw_input("Enter Key: ")
-#	if key == "a":
+def keyInput(cat, ans, amnt):
+	key = raw_input("Enter Key: ")
+	print(key)
+	if key[0] == 'a':
 		#player1
-#	elif key == "":
+		player1_turn(cat, ans, amnt)
+	elif key[0] == 'l':
 		#player2
-#	elif key == "":
-		#player3
+		player2_turn(cat, ans, amnt)
 
 #program start executing
-player1 = raw_input("Returning Champion Player1 enter your name: ")
+player1 = raw_input("Player1 enter your name: ")
 player2 = raw_input("Player2 enter your name: ")
-player3 = raw_input("Player3 enter your name: ")
+#player3 = raw_input("Player3 enter your name: ")
 
 instructions()
 
 #for loop 25 times
-n = 26
+n = 25
 counter = 1
-#player1_turn()#player 1 selects first topic
 
 
 #key pressed for turn
 while counter < n:
-	player1_turn()
-	player2_turn()
-	player3_turn()
+	print(player1 + " choose a question")
+	choose_question()#player 1 selects first topic
+	print(player2 + " choose a question")
+	choose_question()#player 1 selects first topic
+	#print(player3 + " choose a question")
+	#choose_question()#player 1 selects first topic
+	#player1_turn()
+	#player2_turn()
+	#player3_turn()
 	counter += 1
 
 #program finishes executing
