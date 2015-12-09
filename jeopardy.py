@@ -256,13 +256,6 @@ def used_questions(cat, amnt):
 	else:
 		return "You typed something incorrectly"
 
-def player3_turn():
-	user_answer = raw_input("Answer: ")
-	#function that checks answer
-	checkAnswer_p3(user_answer, answer, amount)
-	#function to cross of used questions on board
-	used_questions(category, amount)
-
 def player2_turn(category, answer, amount):
 	print colored(player2 + " answer the question", 'green', 'on_yellow')
 	user_answer = raw_input("Answer: ")
@@ -315,7 +308,6 @@ def keyInput(cat, ans, amnt):
 #program start executing
 player1 = raw_input("Player1 enter your name: ")
 player2 = raw_input("Player2 enter your name: ")
-#player3 = raw_input("Player3 enter your name: ")
 
 instructions()
 
@@ -326,9 +318,11 @@ counter = 1
 
 #key pressed for turn
 while counter < n:
-	print colored(player1 + " choose a question", 'blue', 'on_white')
+	print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
+	print colored("\t\t" + player1 + " choose a question\t\t", 'blue', 'on_white')
 	choose_question()#player 1 selects first topic
-	print colored(player2 + " choose a question", 'green', 'on_white')
+	print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
+	print colored("\t\t" + player2 + " choose a question\t\t", 'green', 'on_white')
 	choose_question()#player 1 selects first topic
 	#print(player3 + " choose a question")
 	#choose_question()#player 1 selects first topic
