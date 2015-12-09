@@ -4,6 +4,8 @@ import time
 from termcolor import colored
 import readchar
 
+currentPlayer = "Player1"
+
 player1 = "Player1"
 player2 = "Player2"
 player3 = "Player3"
@@ -185,6 +187,7 @@ def getAnswer(cat, amnt):
 def checkAnswer_p1(user_ans, ans, amnt):
 	print(user_ans)
 	print(ans)
+	global currentPlayer
 	i = 0
 	for x in amount:
 		if amnt == x:
@@ -192,14 +195,17 @@ def checkAnswer_p1(user_ans, ans, amnt):
 		i += 1
 	if user_ans == ans:
 		print("That is... CORRECT")
+		currentPlayer = player1
 	else:
 		print("That is... WRONG")
 		score = -score
+		currentPlayer = player2
 	global p1_score
 	p1_score = p1_score + score
 	print(p1_score)
 
 def checkAnswer_p2(user_ans, ans, amnt):
+	global currentPlayer
 	i = 0
 	for x in amount:
 		if amnt == x:
@@ -207,10 +213,11 @@ def checkAnswer_p2(user_ans, ans, amnt):
 		i += 1
 	if user_ans == ans:
 		print("That is... CORRECT")
-		i = 0
+		currentPlayer = player2
 	else:
 		print("That is... WRONG")
 		score = -score
+		currentPlayer = player1
 	global p2_score
 	p2_score = p2_score + score
 	print(p2_score)
@@ -291,6 +298,7 @@ def choose_question():
 	print("Your question is...  " + question)
 	keyInput(category, answer, amount)
 
+
 def keyInput(cat, ans, amnt):
 	#win = curses.initscr()
 	#key = win.getch()
@@ -306,24 +314,26 @@ def keyInput(cat, ans, amnt):
 		player2_turn(cat, ans, amnt)
 
 #program start executing
+print("")
 player1 = raw_input("Player1 enter your name: ")
 player2 = raw_input("Player2 enter your name: ")
-
+print("")
 instructions()
 
 #for loop 25 times
 n = 25
 counter = 1
 
-
+#global currentPlayer
+currentPlayer = player1
 #key pressed for turn
 while counter < n:
 	print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
-	print colored("\t\t" + player1 + " choose a question\t\t", 'blue', 'on_white')
+	print colored("\t\t" + currentPlayer + " choose a question\t\t", 'blue', 'on_white')
 	choose_question()#player 1 selects first topic
-	print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
-	print colored("\t\t" + player2 + " choose a question\t\t", 'green', 'on_white')
-	choose_question()#player 1 selects first topic
+	#print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
+	#print colored("\t\t" + player2 + " choose a question\t\t", 'green', 'on_white')
+	#choose_question()#player 1 selects first topic
 	#print(player3 + " choose a question")
 	#choose_question()#player 1 selects first topic
 	#player1_turn()
