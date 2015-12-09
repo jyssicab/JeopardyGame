@@ -23,6 +23,7 @@ score_earned = [10,20,30,40,50]
 
 p1_score = 0
 p2_score = 0
+p3_score = 0
 
 
 topic1_Q = ["What is the capital of the United States?",
@@ -194,8 +195,6 @@ def checkAnswer_p1(user_ans, ans, amnt):
 	print(p1_score)
 
 def checkAnswer_p2(user_ans, ans, amnt):
-	
-
 	if user_ans == ans:
 		print("That is... CORRECT")
 		i = 0
@@ -209,6 +208,21 @@ def checkAnswer_p2(user_ans, ans, amnt):
 	global p2_score
 	p2_score = p2_score + score
 	print(p2_score)
+
+def checkAnswer_p3(user_ans, ans, amnt):
+	if user_ans == ans:
+		print("That is... CORRECT")
+		i = 0
+		for x in amount:
+			if amnt == x:
+				score = score_earned[i]
+			i += 1
+	else:
+		print("That is... WRONG")
+		score = 0
+	global p3_score
+	p3_score = p3_score + score
+	print(p3_score)
 
 def used_questions(cat, amnt):
 	#if statements
@@ -250,6 +264,25 @@ def used_questions(cat, amnt):
 	else:
 		return "You typed something incorrectly"
 
+def player3_turn():
+	initialTable()
+	#print("JEOPARDY")
+	print(player3)
+	category = raw_input("Choose Category: ")
+	amount = raw_input("Choose Amount: ")
+	print("\nYou chose " + category + " at " + amount)
+	#call function, pass in category and amount, then it will return question
+	#function contains if statments	
+	question = getQuestion(category, amount)
+	answer = getAnswer(category, amount)
+	print(answer)
+	print("Your question is...  " + question)
+	user_answer = raw_input("Answer: ")
+	#function that checks answer
+	checkAnswer_p3(user_answer, answer, amount)
+	#function to cross of used questions on board
+	used_questions(category, amount)
+
 def player2_turn():
 	initialTable()
 	#print("JEOPARDY")
@@ -277,7 +310,7 @@ def player1_turn():
 	amount = raw_input("Choose Amount: ")
 	print("\nYou chose " + category + " at " + amount)
 	#call function, pass in category and amount, then it will return question
-	#function contains if statments	
+	#function contains if statments
 	question = getQuestion(category, amount)
 	answer = getAnswer(category, amount)
 	print(answer)
@@ -287,24 +320,42 @@ def player1_turn():
 	checkAnswer_p1(user_answer, answer, amount)
 	#function to cross of used questions on board
 	used_questions(category, amount)
-	
 
+#def choose_question():
+#	initialTable()
+	#print("JEOPARDY")
+##	print(player1)
+#	category = raw_input("Choose Category: ")
+#	amount = raw_input("Choose Amount: ")
+#	print("\nYou chose " + category + " at " + amount)
+
+#def keyInput():
+#	key = raw_input("Enter Key: ")
+#	if key == "a":
+		#player1
+#	elif key == "":
+		#player2
+#	elif key == "":
+		#player3
 
 #program start executing
-player1 = raw_input("Returning Champion enter your name: ")
-player2 = raw_input("Player1 enter your name: ")
-player3 = raw_input("Player2 enter your name: ")
+player1 = raw_input("Returning Champion Player1 enter your name: ")
+player2 = raw_input("Player2 enter your name: ")
+player3 = raw_input("Player3 enter your name: ")
 
 instructions()
 
 #for loop 25 times
-n = 25
+n = 26
 counter = 1
-#player1_turn()
+#player1_turn()#player 1 selects first topic
+
+
 #key pressed for turn
 while counter < n:
 	player1_turn()
 	player2_turn()
+	player3_turn()
 	counter += 1
 
 #program finishes executing
