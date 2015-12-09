@@ -4,6 +4,12 @@ import time
 from termcolor import colored
 import readchar
 
+lastCategory = ""
+lastAmount = ""
+lastAnswer = ""
+
+guessed = 1
+
 currentPlayer = "Player1"
 
 player1 = "Player1"
@@ -187,6 +193,8 @@ def getAnswer(cat, amnt):
 def checkAnswer_p1(user_ans, ans, amnt):
 	print(user_ans)
 	print(ans)
+	global guessed
+
 	global currentPlayer
 	i = 0
 	for x in amount:
@@ -196,15 +204,21 @@ def checkAnswer_p1(user_ans, ans, amnt):
 	if user_ans == ans:
 		print("That is... CORRECT")
 		currentPlayer = player1
+		guessed = 1
 	else:
 		print("That is... WRONG")
 		score = -score
+		if guessed == 1:
+			guessed = 0
+		else:
+			guessed = 1
 		currentPlayer = player2
 	global p1_score
 	p1_score = p1_score + score
 	print(p1_score)
 
 def checkAnswer_p2(user_ans, ans, amnt):
+	global guessed
 	global currentPlayer
 	i = 0
 	for x in amount:
@@ -214,9 +228,14 @@ def checkAnswer_p2(user_ans, ans, amnt):
 	if user_ans == ans:
 		print("That is... CORRECT")
 		currentPlayer = player2
+		guessed = 1
 	else:
 		print("That is... WRONG")
 		score = -score
+		if guessed == 1:
+			guessed = 0
+		else:
+			guessed = 1
 		currentPlayer = player1
 	global p2_score
 	p2_score = p2_score + score
@@ -296,8 +315,15 @@ def choose_question():
 		time.sleep(1)
 		counter -= 1
 	print("Your question is...  " + question)
+	global lastCategory
+	lastCategory = category
+	global lastAnswer
+	lastAnswer = answer
+	global lastAmount
+	lastAmount = amount
 	keyInput(category, answer, amount)
 
+	
 
 def keyInput(cat, ans, amnt):
 	#win = curses.initscr()
@@ -326,11 +352,21 @@ counter = 1
 
 #global currentPlayer
 currentPlayer = player1
+guessed = 1
+lastCategory = "none"
+lastAmount = "none"
+lastAnswer = "none"
 #key pressed for turn
 while counter < n:
-	print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
-	print colored("\t\t" + currentPlayer + " choose a question\t\t", 'blue', 'on_white')
-	choose_question()#player 1 selects first topic
+	if guessed == 0:
+		if currentPlayer == player1:
+			player1_turn(lastCategory, lastAnswer, lastAmount)
+		elif currentPlayer == player2:
+			player2_turn(lastCategory, lastAnswer, lastAmount)
+	else:
+		print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
+		print colored("\t\t" + currentPlayer + " choose a question\t\t", 'blue', 'on_white')
+		choose_question()#player 1 selects first topic
 	#print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
 	#print colored("\t\t" + player2 + " choose a question\t\t", 'green', 'on_white')
 	#choose_question()#player 1 selects first topic
