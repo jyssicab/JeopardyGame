@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from prettytable import PrettyTable
 import time
+from termcolor import colored
 
 player1 = "Player1"
 player2 = "Player2"
@@ -99,13 +100,16 @@ def initialTable():
 	x.add_column(topic3, [amount3[0], amount3[1], amount3[2], amount3[3], amount3[4]])
 	x.add_column(topic4, [amount4[0], amount4[1], amount4[2], amount4[3], amount4[4]])
 	x.add_column(topic5, [amount5[0], amount5[1], amount5[2], amount5[3], amount5[4]])
+	
 	print x.get_string(header=True, border=True)
 
 def instructions():
-	print("To choose a topic and score, enter exactly what is typed on Board (capatilization)")
-	print("Returning champion selected topic first")
-	print("Buzz in to answer quesiton")
-	print(player1 + " use key a\n" + player2 + " use key l\n")# + player3 + " use key l\n")
+	print colored("INSTRUCTIONS", 'red')
+	print colored("---To choose a topic and score, enter exactly what is typed on Board (capatilization)---", 'yellow')
+	print colored("---Returning champion selected topic first---", 'yellow')
+	print colored("---Buzz in to answer quesiton---", 'yellow')
+	print colored("\t" + player1 + " use key a", 'blue')
+	print colored("\t" + player2 + " use key l\n", 'green')
 
 def getQuestion(cat, amnt):
 	#if statements
@@ -180,50 +184,36 @@ def getAnswer(cat, amnt):
 def checkAnswer_p1(user_ans, ans, amnt):
 	print(user_ans)
 	print(ans)
+	i = 0
+	for x in amount:
+		if amnt == x:
+			score = score_earned[i]
+		i += 1
 	if user_ans == ans:
 		print("That is... CORRECT")
-		
-		i = 0
-		for x in amount:
-			if amnt == x:
-				score = score_earned[i]
-			i += 1
 	else:
 		print("That is... WRONG")
-		score = 0
+		score = -score
 	global p1_score
 	p1_score = p1_score + score
 	print(p1_score)
 
 def checkAnswer_p2(user_ans, ans, amnt):
+	i = 0
+	for x in amount:
+		if amnt == x:
+			score = score_earned[i]
+		i += 1
 	if user_ans == ans:
 		print("That is... CORRECT")
 		i = 0
-		for x in amount:
-			if amnt == x:
-				score = score_earned[i]
-			i += 1
 	else:
 		print("That is... WRONG")
-		score = 0
+		score = -score
 	global p2_score
 	p2_score = p2_score + score
 	print(p2_score)
 
-def checkAnswer_p3(user_ans, ans, amnt):
-	if user_ans == ans:
-		print("That is... CORRECT")
-		i = 0
-		for x in amount:
-			if amnt == x:
-				score = score_earned[i]
-			i += 1
-	else:
-		print("That is... WRONG")
-		score = 0
-	global p3_score
-	p3_score = p3_score + score
-	print(p3_score)
 
 def used_questions(cat, amnt):
 	#if statements
@@ -273,7 +263,7 @@ def player3_turn():
 	used_questions(category, amount)
 
 def player2_turn(category, answer, amount):
-	print(player2)
+	print colored(player2 + " answer the question", 'green')
 	user_answer = raw_input("Answer: ")
 	#function that checks answer
 	checkAnswer_p2(user_answer, answer, amount)
@@ -281,7 +271,7 @@ def player2_turn(category, answer, amount):
 	used_questions(category, amount)
 
 def player1_turn(category, answer, amount):
-	print(player1)
+	print colored(player1 + " answer the question", 'blue')
 	user_answer = raw_input("Answer: ")
 	#function that checks answer
 	checkAnswer_p1(user_answer, answer, amount)
@@ -290,8 +280,6 @@ def player1_turn(category, answer, amount):
 
 def choose_question():
 	initialTable()
-	#print("JEOPARDY")
-	#print(player1)
 	category = raw_input("Choose Category: ")
 	amount = raw_input("Choose Amount: ")
 	print("\nYou chose " + category + " at " + amount)
@@ -300,7 +288,6 @@ def choose_question():
 	question = getQuestion(category, amount)
 	answer = getAnswer(category, amount)
 	print(answer)
-	print("Put your finger on the buzzer...")
 	counter = 5
 	print("Buzz in...")
 	while counter > 0:
@@ -312,7 +299,6 @@ def choose_question():
 
 def keyInput(cat, ans, amnt):
 	key = raw_input("Enter Key: ")
-	print(key)
 	if key[0] == 'a':
 		#player1
 		player1_turn(cat, ans, amnt)
@@ -334,9 +320,9 @@ counter = 1
 
 #key pressed for turn
 while counter < n:
-	print(player1 + " choose a question")
+	print colored(player1 + " choose a question", 'blue', 'on_white')
 	choose_question()#player 1 selects first topic
-	print(player2 + " choose a question")
+	print colored(player2 + " choose a question", 'green', 'on_white')
 	choose_question()#player 1 selects first topic
 	#print(player3 + " choose a question")
 	#choose_question()#player 1 selects first topic
