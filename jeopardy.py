@@ -2,6 +2,7 @@
 from prettytable import PrettyTable
 import time
 from termcolor import colored
+import readchar
 
 player1 = "Player1"
 player2 = "Player2"
@@ -263,7 +264,7 @@ def player3_turn():
 	used_questions(category, amount)
 
 def player2_turn(category, answer, amount):
-	print colored(player2 + " answer the question", 'green')
+	print colored(player2 + " answer the question", 'green', 'on_yellow')
 	user_answer = raw_input("Answer: ")
 	#function that checks answer
 	checkAnswer_p2(user_answer, answer, amount)
@@ -271,7 +272,7 @@ def player2_turn(category, answer, amount):
 	used_questions(category, amount)
 
 def player1_turn(category, answer, amount):
-	print colored(player1 + " answer the question", 'blue')
+	print colored(player1 + " answer the question", 'blue', 'on_yellow')
 	user_answer = raw_input("Answer: ")
 	#function that checks answer
 	checkAnswer_p1(user_answer, answer, amount)
@@ -298,11 +299,16 @@ def choose_question():
 	keyInput(category, answer, amount)
 
 def keyInput(cat, ans, amnt):
-	key = raw_input("Enter Key: ")
-	if key[0] == 'a':
+	#win = curses.initscr()
+	#key = win.getch()
+	print("Enter Key: ")
+	key = readchar.readchar()
+	#key = raw_input("Enter Key: ")
+	#print("Enter Key: ")	
+	if key == 'a':
 		#player1
 		player1_turn(cat, ans, amnt)
-	elif key[0] == 'l':
+	elif key == 'l':
 		#player2
 		player2_turn(cat, ans, amnt)
 
