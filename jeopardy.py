@@ -17,7 +17,7 @@ player2 = "Player2"
 player3 = "Player3"
 
 topic1 = "America"
-topic2 = "Japan"
+topic2 = "Animals"
 topic3 = "Sports"
 topic4 = "Nazo Nazo"
 topic5 = "Music"
@@ -39,66 +39,66 @@ p3_score = 0
 
 topic1_Q = ["What is the capital of the United States?",
 	"What is the longest river in America?", 
-	"Where does the name America come from?", 
+	"Which State of the USA was once part of Mexico?", 
 	"What country is north of America?", 
-	"What does USA stand for?"]
+	"Which of the following cities is in Nevada?"]
 
-topic1_A = ["Washington",
-	"Mississippi",
-	"Amerigo Vespucci",
-	"Canada",
-	"United States of America"]
+topic1_A = ["washington",
+	"mississippi",
+	"texas",
+	"canada",
+	"reno"]
 
 
-topic2_Q = ["What is Japan's country's song?",
-	"What is the biggest lake in Japan?",
-	"Who is on 5000 yen?",
-	"When did the Kamakura Bakufu start?",
-	"What is Japan's country's bird?"]
+topic2_Q = ["What food makes up to nearly all of a Giant Panda's diet?",
+	"What is the largest type of 'big cat' in the world?",
+	"What is the name of an adult female horse?",
+	"Bees are found on every continent of earth except for one, which is it?",
+	"What are female elephants called"]
 
-topic2_A = ["Kimigayo",
-	"Lake Biwa / Biwa-ko",
-	"Nitobe Inazo",
-	"1192",
-	"kiji"]
+topic2_A = ["bamboo",
+	"tiger",
+	"mare",
+	"antarctica",
+	"cows"]
 
 
 
 topic3_Q = ["How many members are on a soccer team?",
 	"What is Hideo Nomo's uniform number?",
 	"In tennis, what is the name of 0 points?",
-	"Name 4 sports that don't use balls.",
-	"Where were the 1984 Olympics?"]
+	"Which is the only country to have played in each and every World Cup?",
+	"What sport used the term 'home run' long before baseball?"]
 
 topic3_A = ["11",
 	"16",
 	"love",
-	"???",
-	"Los Angeles"]
+	"brazil",
+	"cricket"]
 
 topic4_Q = ["1, 2, 4, 8, 16, ?",
-	"Z, Y, X, W, ?",
-	"S, M, T, ?, T, F, S",
-	"O, T, T, F, F, ?",
-	"J, Y, K, A, N, ?, K"]
+	"z, y, x, w, ?",
+	"s, m, t, ?, t, f, s",
+	"o, t, t, f, f, ?",
+	"j, y, k, a, n, ?, k"]
 
 topic4_A = ["32",
-	"V",
-	"W",
-	"S",
-	"H"]
+	"v",
+	"w",
+	"s",
+	"h"]
 
-topic5_Q = ["Who are the members of Globe?",
-	"Who sings 'Be With You'?",
-	"Who sings 'Young Man'?",
+topic5_Q = ["What was Madonna's first UK top ten single?",
+	"Which singer appeared in the feature film, Battleship?",
+	"In May 2015, who dressed up as George Michael to celebrate their 27th birthday and posted the snaps on Twitter?",
 	"How many keys are on a piano?",
-	"What does SMAP stand for?"]
+	"Which pop band features Sharleen Spiteri on lead vocals?"]
 
-topic5_A = ["Keiko, Komuro Tetsuya, Marc Panther",
-	"Glay",
-	"Saijo Hideki",
+topic5_A = ["holiday",
+	"rihanna",
+	"adele",
 	"88",
-	"Sport Music Assemble People"]
+	"texas"]
 
 
 #declaration of functions
@@ -191,8 +191,6 @@ def getAnswer(cat, amnt):
 		return "You typed something incorrectly"
 
 def checkAnswer_p1(user_ans, ans, amnt):
-	print(user_ans)
-	print(ans)
 	global guessed
 
 	global currentPlayer
@@ -212,7 +210,6 @@ def checkAnswer_p1(user_ans, ans, amnt):
 			guessed = 0
 		else:
 			guessed = 1
-		currentPlayer = player2
 	global p1_score
 	p1_score = p1_score + score
 	print(p1_score)
@@ -236,7 +233,6 @@ def checkAnswer_p2(user_ans, ans, amnt):
 			guessed = 0
 		else:
 			guessed = 1
-		currentPlayer = player1
 	global p2_score
 	p2_score = p2_score + score
 	print(p2_score)
@@ -298,20 +294,49 @@ def player1_turn(category, answer, amount):
 	#function to cross of used questions on board
 	used_questions(category, amount)
 
+def match_category(cat):
+	if cat == topic1:
+		return 1
+	elif cat == topic2:
+		return 1
+	elif cat == topic3:
+		return 1
+	elif cat == topic4:
+		return 1
+	elif cat == topic5:
+		return 1
+	return 0
+
+def match_amount(amnt):
+	i = 0
+	for x in amount:
+		if amnt == x:
+			return 1				
+		i += 1
+	return 0
+
 def choose_question():
 	initialTable()
 	category = raw_input("Choose Category: ")
+	while match_category(category) == 0:
+		category = raw_input("Doesn't match... Choose Category: ")
 	amount = raw_input("Choose Amount: ")
+	while match_amount(amount) == 0:
+		amount = raw_input("Doesn't match... Choose Amount: ")
+
 	print("\nYou chose " + category + " at " + amount)
+	time.sleep(2)
 	#call function, pass in category and amount, then it will return question
 	#function contains if statments
 	question = getQuestion(category, amount)
 	answer = getAnswer(category, amount)
-	print(answer)
+	#print(answer)#GET RID OF THISSSSSSS
+	print("")
 	counter = 5
 	print("Buzz in...")
+	time.sleep(2)
 	while counter > 0:
-		print(counter)
+		print("\t   " + str(counter))
 		time.sleep(1)
 		counter -= 1
 	print("Your question is...  " + question)
@@ -329,9 +354,16 @@ def keyInput(cat, ans, amnt):
 	#win = curses.initscr()
 	#key = win.getch()
 	print("Enter Key: ")
-	key = readchar.readchar()
 	#key = raw_input("Enter Key: ")
-	#print("Enter Key: ")	
+	#print("Enter Key: ")
+	is_key = False
+	while is_key == False:
+		key = readchar.readchar()
+		if key == 'a':
+			is_key = True
+		elif key == 'l':
+			is_key = True
+
 	if key == 'a':
 		#player1
 		player1_turn(cat, ans, amnt)
@@ -348,7 +380,7 @@ instructions()
 
 #for loop 25 times
 n = 25
-counter = 1
+counter = 0
 
 #global currentPlayer
 currentPlayer = player1
@@ -367,14 +399,6 @@ while counter < n:
 		print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
 		print colored("\t\t" + currentPlayer + " choose a question\t\t", 'blue', 'on_white')
 		choose_question()#player 1 selects first topic
-	#print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
-	#print colored("\t\t" + player2 + " choose a question\t\t", 'green', 'on_white')
-	#choose_question()#player 1 selects first topic
-	#print(player3 + " choose a question")
-	#choose_question()#player 1 selects first topic
-	#player1_turn()
-	#player2_turn()
-	#player3_turn()
-	counter += 1
+		counter += 1
 
 #program finishes executing
