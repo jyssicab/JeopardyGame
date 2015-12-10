@@ -395,6 +395,7 @@ while counter < n:
 			player1_turn(lastCategory, lastAnswer, lastAmount)
 		elif currentPlayer == player2:
 			player2_turn(lastCategory, lastAnswer, lastAmount)
+		print("The correct answer was " + lastAnswer)
 	else:
 		print colored(player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
 		print colored("\t\t" + currentPlayer + " choose a question\t\t", 'blue', 'on_white')
