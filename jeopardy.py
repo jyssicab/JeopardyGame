@@ -400,5 +400,8 @@ while counter < n:
 		print colored("\t\t" + currentPlayer + " choose a question\t\t", 'blue', 'on_white')
 		choose_question()#player 1 selects first topic
 		counter += 1
+print("Game Over")
+print("Final Score: " + player1 + "'s Score " + str(p1_score) + "\t\t" + player2 + "'s Score " + str(p2_score) + "\t", 'white' , 'on_green')
+
 
 #program finishes executing
